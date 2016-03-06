@@ -7,11 +7,21 @@
 <table border="1" width = "1650" height = "1000" cellpadding = "15" cellspacing = "10" bgcolor="#bedbeb">
 
 <tr bgcolor="#FFFFFF">
-<td>put header here</td>
+<td height = "20%">put header here</td>
 </tr>
 
 <tr bgcolor="#FFFFFF">
-<td>row 2, cell 1</td>
+<td><form method ="post" action="login.jsp" name="loginForm"> Sign in:
+<br>
+<input type="text" value = "username" name="username"></input> 
+<br>
+<input type="password" value = "password" name="pass"></input>
+<br>
+<input type = "submit" value = "Log in" name = "submit"></input>
+</form>
+<br>
+<font size = "2"><i>Not a member? Sign up.</i></font>
+</td>
 </tr>
 
 </table>
