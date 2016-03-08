@@ -1,18 +1,17 @@
-<%@ page import="java.sql.*" %> 
+<%@ page import="java.sql.* , java.io.*" %> 
 <% if(request.getParameter("ssubmit") != null) { 
 //get the user input from the login page 
-String userName = (request.getParameter("username")).trim();
+String userName = (request.getParameter("username")).trim().toLowerCase();
 String passwd = (request.getParameter("password")).trim(); 
 
 String fName = (request.getParameter("fname")).trim();
 String lName = (request.getParameter("lname")).trim();
 String address = (request.getParameter("address")).trim();
-String email = (request.getParameter("email")).trim();
+String email = (request.getParameter("email")).trim().toLowerCase();
 String phone = (request.getParameter("phone")).trim();
-//remove unnecessary characters from phone so it doesn't crash oracle
-phone = phone.replaceAll("-","");
-//phone = phone.replaceAll("(","");
-//phone = phone.replaceAll(")","");
+
+phone=phone.replaceAll("\\D+",""); //remove unnecessary characters
+
 
 out.println("Your input User Name is "+userName+"<p>");
 
@@ -57,10 +56,7 @@ rset = stmt.executeQuery(sql);
 
 } catch(Exception ex){ out.println("" + ex.getMessage() + "");
 	 }
-/*
-String truepwd = "";
-while(rset != null && rset.next()) truepwd = (rset.getString(1)).trim();
-*/
+
 
 if(!rset.next()){ //if no matches, it's an unused username
 out.println(userName+" is not currently in use.<p>");
@@ -97,4 +93,5 @@ out.println("null!!");
 out.println("UserName:");
 out.println("Password:");
 out.println("");
-out.println(""); } %> 
+out.println(""); } 
+%> 
